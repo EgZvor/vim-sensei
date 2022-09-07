@@ -6,6 +6,12 @@ import sys
 
 DEBUG = os.environ.get("DEBUG", False)
 
+INVALID_INPUT_LIST = (
+    # Vim Leave/Enter events
+    '\\x1b[O',
+    '\\x1b[I',
+)
+
 interrupted = False
 
 
@@ -75,7 +81,9 @@ def main():
                 if DEBUG:
                     print(f'{lineno} {m.group("key")}')
                 else:
-                    print(repr(m.group("key"))[2:-1])
+                    token = repr(m.group("key"))[2:-1]
+                    if token not in INVALID_INPUT_LIST:
+                        print(token)
             sys.stdout.flush()
     except BrokenPipeError:
         # Python flushes standard streams on exit; redirect remaining output
