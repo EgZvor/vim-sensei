@@ -53,6 +53,14 @@ $ python scripts/process-vim-log.py ~/.vim/log-* > vim.log
 
 [Jupyter - ArchWiki](https://wiki.archlinux.org/title/Jupyter)
 
+## Warning
+
+The resulting log file may contain sensitive information due to imperfect
+filtering of insert methods! **Do not share** your log file with untrusted parties!
+
+Use [scripts/find-words.py](scripts/find-words.py) to detect *some* english
+words in your log.
+
 ## What to do about it?
 
 Here are some resources to help you find better solutions.
